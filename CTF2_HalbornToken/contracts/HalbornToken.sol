@@ -141,36 +141,6 @@ contract HalbornToken is ERC20{
         return balanceOf(who) - timelockedTokens[who] + maxTokens;
     }
 
-    function getwoot1(address who) public view returns (uint256) {
-        return timelockedTokens[who];
-    }
-
-    function getwoot2(address who) public view returns (uint256) {
-        return block.timestamp;
-    }
-
-    function getwoot3(address who) public view returns (uint256) {
-        return vestTime[who];
-    }
-
-    function getwoot4(address who) public view returns (uint256) {
-        return cliffTime[who];
-    }
-
-    function getwoot5(address who) public view returns (uint256) {
-        return disbursementPeriod[who];
-    }
-
-    function getwoot6(address who) public view returns (uint256) {
-        uint256 maxTokens;
-        if( vestTime[who] > block.timestamp || cliffTime[who] > block.timestamp){
-            maxTokens = 89;
-        } else {
-            maxTokens = timelockedTokens[who] * (block.timestamp - vestTime[who]) / disbursementPeriod[who];
-        }
-        return maxTokens;
-    }
-
     /// @dev Calculates the amount of locked tokens for address `who`
     function balanceLocked(address who)
         public
