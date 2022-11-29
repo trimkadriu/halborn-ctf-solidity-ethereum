@@ -80,9 +80,8 @@ def test_vuln_2(admin_account, halborn_nft, nft_marketplace):
 
 
 # VULNERABILITY 3
-# Description: The buySellOrder function vulnerable as it
-# Impact: Anyone is able to bid to an NFT and lock the bid price by sending the request from a contract and not \
-# accepting the ethereum back when another user tries to outbid them
+# Description: The buySellOrder function is vulnerable as the Marketplace allows for orders to be updated
+# Impact: An attacker can change the sell order price after the buyer decided to buy that sell order
 def test_vuln_3(admin_account, ape_coin, halborn_nft, nft_marketplace):
     # Setup accounts
     seller_account = accounts.add()
@@ -115,7 +114,7 @@ def test_vuln_3(admin_account, ape_coin, halborn_nft, nft_marketplace):
 
 
 # VULNERABILITY 4
-# Description: The sellToOrderId function vulnerable as orders can be updated in the mean time
+# Description: The sellToOrderId function is vulnerable as orders can be updated in the mean time
 # Impact: A buyer can decrease (or increase) the APE amount after the seller decides to sell to that particular order
 def test_vuln_4(admin_account, ape_coin, halborn_nft, nft_marketplace):
     # Setup accounts
